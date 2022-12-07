@@ -5,7 +5,6 @@ const fs = require('fs')
 const port = 1234
 const ip = '127.0.0.1'
 app.use(express.urlencoded({extended: true}))
-app.use(express.static('public'))
 app.set('view engine', 'ejs')
 
 
