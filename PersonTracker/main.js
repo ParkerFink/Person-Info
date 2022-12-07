@@ -1,9 +1,11 @@
+const exp = require('constants')
 const express = require('express')
 const app = express()
 const fs = require('fs')
 const port = 1234
 const ip = '127.0.0.1'
 app.use(express.urlencoded({extended: true}))
+app.use(express.static('public'))
 app.set('view engine', 'ejs')
 
 
@@ -18,11 +20,12 @@ app.post('/', function(req,res){
         name: req.body.name,
         age: req.body.age,
         birthday: req.body.birthday,
+        address: req.body.address,
         height: req.body.height,
         addinfo: req.body.height
     }
     stringData = JSON.stringify(person)
-    fs.writeFileSync('People/' + person.name + '.txt', stringData)
+    fs.writeFileSync('Files/' + person.name + '.txt', stringData)
     console.log("Person was filed")
 })
 
